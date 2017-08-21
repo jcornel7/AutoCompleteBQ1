@@ -5,19 +5,19 @@ use Google\Cloud\BigQuery\QueryResults;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('America/New_York');
 
 
 if(isset($_GET['term'])){
 
 	$term = $_GET['term'];
 
-	$projectId = "wise-hub-175615";
+	$projectId = "smartcompletedemo-v2";
 	$bigQuery = new BigQueryClient([
             'projectId' => $projectId,
         ]);
 
-    $query = "SELECT * FROM [wise-hub-175615:gcp.products] where product like '%{$term}%'";
+    $query = "SELECT * FROM [smartcompletedemo-v2:gcp.products] where product like '%{$term}%'";
     $options = ['useLegacySql' => true];
     $queryResults = $bigQuery->runQuery($query, $options);
 
